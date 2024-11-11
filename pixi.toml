@@ -1,0 +1,26 @@
+[project]
+name = "calculix"
+version = "2.22"
+description = "A pixi project for simplifying the build of calculix"
+channels = ["conda-forge"]
+platforms = ["win-64", "linux-64"]
+
+[dependencies]
+libblas = "*"
+liblapack = "*"
+arpack = "*"
+spooles = "*"
+cmake = "*"
+ninja = "*"
+perl = "*"
+make = "*"
+
+[target.win-64.dependencies]
+vswhere = "*"
+
+[tasks]
+build = {cmd = ["cmake", "--preset", "win-msvc-intel-fortran-debug","-S", "cmake", "-B", "build/msvc-ifx", "--fresh"], description = "Build the project"}
+install = { cmd = ["ninja", "-C", "build/msvc-ifx"], description = "Install the project" }
+
+[target.win-64.activation]
+scripts = ["cmake/activate.bat", "cmake/activate_intel.bat"]

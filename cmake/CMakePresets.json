@@ -1,0 +1,51 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "shared",
+      "hidden": true,
+      "warnings": {
+        "dev": false
+      },
+      "environment": {
+        "PREFIX": "${sourceDir}/../.pixi/envs/default"
+      },
+      "cacheVariables": {
+        "CMAKE_FIND_ROOT_PATH_MODE_PROGRAM": "NEVER",
+        "CMAKE_FIND_ROOT_PATH_MODE_LIBRARY": "ONLY",
+        "CMAKE_FIND_ROOT_PATH_MODE_INCLUDE": "ONLY"
+      }
+    },
+    {
+      "name": "win-shared",
+      "inherits": [
+        "shared"
+      ],
+      "hidden": true,
+      "environment": {
+        "LIBRARY_PREFIX": "${sourceDir}/../.pixi/envs/default/Library",
+        "CFLAGS": "$penv{CFLAGS} -I$env{LIBRARY_PREFIX}/include"
+      },
+      "cacheVariables": {
+        "SPOOLES_INCLUDE_DIR": "$env{LIBRARY_PREFIX}/mingw-w64/include/spooles",
+        "INCLUDE_DIR": "$penv{INCLUDE_DIR} $env{LIBRARY_PREFIX}/include",
+        "LIB_DIR": "$env{LIBRARY_PREFIX}/mingw-w64/lib",
+        "LDFLAGS": "-L$env{LIBRARY_PREFIX}/mingw-w64/lib -L$env{LIBRARY_PREFIX}/lib",
+        "CMAKE_VERBOSE_MAKEFILE": "ON",
+        "CMAKE_INSTALL_PREFIX": "$env{LIBRARY_PREFIX}",
+        "CMAKE_PREFIX_PATH": "$env{PREFIX};$env{LIBRARY_PREFIX};$env{LIBRARY_PREFIX}/include;$env{LIBRARY_PREFIX}/lib;$env{LIBRARY_PREFIX}/bin"
+      }
+    },
+    {
+      "name": "win-msvc-intel-fortran-debug",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "inherits": [
+        "win-shared"
+      ],
+      "environment": {
+        "FC": "ifx.exe"
+      }
+    }
+  ]
+}
