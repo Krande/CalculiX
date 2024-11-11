@@ -1,5 +1,7 @@
-
+#ifndef MSVC64
 #include <unistd.h>
+#endif
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>

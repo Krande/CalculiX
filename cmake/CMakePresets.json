@@ -39,7 +39,7 @@
     {
       "name": "win-msvc-intel-fortran-debug",
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build/${presetName}",
+      "binaryDir": "${sourceDir}/../build/${presetName}",
       "inherits": [
         "win-shared"
       ],

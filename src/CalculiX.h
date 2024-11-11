@@ -21,6 +21,7 @@
 #define IRIX 2
 #define IRIX64 3
 #define HP 4
+#define WINDOWS 5  // Add a constant for Windows
 
 #if ARCH == Linux
 #define FORTRAN(A,B) A##_  B
@@ -28,6 +29,9 @@
 #define FORTRAN(A,B) A##_##B
 #elif ARCH == HP
 #define FORTRAN(A,B) A##B
+#elif ARCH == WINDOWS
+#define FORTRAN(A,B) A##B  // Simplified for Windows
+#define CEE(A,B) A##B      // Simplified for Windows
 #endif
 
 #if ARCH == Linux

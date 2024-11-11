@@ -15,7 +15,9 @@
 /*     along with this program; if not, write to the Free Software       */
 /*     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.         */
 
+#ifndef MSVC64
 #include <unistd.h>
+#endif
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>

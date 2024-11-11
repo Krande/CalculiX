@@ -24,7 +24,7 @@ endif()
 
 # Compiler and linker flags for Windows
 if(WIN32)
-    string(APPEND CMAKE_C_FLAGS " /nologo /W3 /DARCH=5 /DSPOOLES /DARPACK /DMATRIXSTORAGE /DNETWORKOUT")
+    string(APPEND CMAKE_C_FLAGS " /nologo /W3 /DARCH=WINDOWS /DPTHREAD_DLL_IMPORT /DMSVC64 /DSPOOLES /DARPACK /DMATRIXSTORAGE /DNETWORKOUT")
     string(APPEND CMAKE_Fortran_FLAGS " /nologo")
     set(LIBS kernel32 user32 gdi32 winspool comdlg32 advapi32 shell32 ole32 oleaut32 uuid odbc32 odbccp32)
 endif()
